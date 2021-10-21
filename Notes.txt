@@ -1,0 +1,120 @@
+*This space moves quickly, so read the documentation if confused
+*Use etherscan.io to view transactions and blocks
+
+
+The Blockchain
+---------------
+Smart Contracts - digital versions of real world contracts
+    Need some way to interact with real world data
+Blockchain oracles - devices that bring data to a blockchain or execute external computation
+    To stay decentralized, blockchains need the oracles to be decentralized as well
+Hybrid Smart Contracts - when smart contracts are combined with oracles
+    Combine on chain and off chain components
+Chainlink - most popylar decentralized oracle network
+    Works in any blockchain or smart contract platform
+*Dapp = Smart Contract = Decentralized App
+Many platforms stem from Ethereum, so learning the basics of smart contracts on Ethereum will translate to the other platforms
+Ethereum is the most popular blockchain for smart contracts
+DAOs - organizations that live on blockchains
+Use https://andersbrownworth.com/blockchain to get a visual understanding of how blockchain works
+
+Wallets and Networks
+---------------------
+Mainnet network - cost money and tokens have real value
+Testnet network - free and is used to test smart contracts
+Faucet - application that gives free testnet tokens
+Block explorer - see tranctions that happen on a blockchain
+Gas - measure of computation use
+Gas price - price per unit of gas
+Gas limit - max amount of gas in transaction
+Transaction fee - gas used * gas price
+
+Consensus
+----------
+Consensus - mechanism used to agree on the state of a blockchain
+2 main pieces
+    1. Chain Selection - process to determine which blockchain is the real one
+        Nakamoto consensus - combination of proof of work and longest chain rule
+            The chain that is the longest is chosen to be the real one
+        Block confirmations - number of additional blocks added on after out transaction went through
+    2. Sybil Resistance - blockchain's ability to defend against creation of large amounts of identities to gain control over the blockchain
+        Mining and proof of work are a part of this
+Proof of work - single node has to go through mining (a computationally hard process)
+    Mining difficulty is proportional to block time (time between blocks added)
+    This costs a lot of electricity
+**The bigger a blockchain is, the more secure it is
+Transaction fees - feed paid to miners from users
+Block rewards - crypto is rewarded to miners every time they create a new block
+    This increases the amount of crypto in circulation
+    Halving - the reward given out is halved every few years
+        Some blockchains have this so there's a maximum amount of crypto in circulation
+Proof of stake - an alternative to proof of work, put up collateral as a sybil resistance mechanism
+    Uses much less electricity than proof of work
+    ETH2 will start using this
+    If they misbehave their stake is slashed
+    Miners are called validaters
+
+Attacks
+--------
+Sybil attack - user creates many accounts to influence the network
+    Difficult because of proof of work
+51% attack - if you control 51% of the network you can fork the blockchain and make that the 'real' one
+
+Scalability
+------------
+There shouldn't be financial constraints that prevent scalability
+    Such as gas prices increasing the more people that join ethereum
+Sharding - blockchain of blockchains
+    Increases scalability
+Layer 1 - any base layer blockchain implementation
+    Bitcoin, Ethereum
+Layer 2 - any application built on top of layer 1
+Rollups - when layer 2 use layer 1 to process transactions
+    Like sharding
+Side chains - applications that derive their security from the base chain, opposite of rollups
+
+Solidity
+---------
+We're using the remix IDE
+    ctrl+s automatically compiles the code
+Solidity - a programming language for creating smart contracts
+    https://docs.soliditylang.org/en/v0.8.9/
+    Syntax is like JS
+Solidity code is compiled to EVM (ethereum virtual machine)
+On the top of the document:
+    Specify license
+        Ex. // SPDX-License-Identifier: MIT
+    Specify solidity version
+        pragma solidity 0.6.0;
+Variable types
+    int
+    uint
+    bool
+    string
+    address
+    bytes
+Comments with //
+To allow users access to functions and variables make sure to use the 'public' keyword
+When you call a function in solidity, you're making a transaction on the blockchain
+    Two types of functions that you don't make transactions when called are view and pure
+    Public variables are automatically view functions
+    Ex.     function retrieve() public view returns(uint256) {
+                return favoriteNumber;
+            }
+pure - functions that do some kind of math
+view - functions used to view something on the blockchain
+Data structures
+    Array
+        People[] public people;
+    Struct
+        struct People {
+            uint256 favoriteNumber;
+            string name;
+        }
+    Mapping - a dictionary
+        mapping(string => uint256) public nameToFavoriteNumber;
+memory - keep variable only while program runs
+    Whenever referencing a string, use 'memory' keyword before it
+storage - store variable forever
+
+2:09:50
